@@ -1,7 +1,7 @@
 # 概念解析    
-部署方案是基于fastgpt(https://doc.tryfastgpt.ai/docs/development/docker/)的知识库管理系统，以oneapi为媒介调用ollama管理的大语言模型，具体的实现架构如下图所示。
+部署方案是基于fastgpt     https://doc.tryfastgpt.ai/docs/development/docker/    的知识库管理系统，以oneapi为媒介调用ollama管理的大语言模型，具体的实现架构如下图所示。
 ![图片alt](https://cdn.jsdelivr.net/gh/yangchuansheng/fastgpt-imgs@main/imgs/sealos-fastgpt.webp '使用docker部署fastgpt的技术方案')
-1. docker: 类似于一个包管理软件，打包所有需要的系统环境或软件内容，放在本地以后即可离线访问不同的组件。项目使用docker技术将这些工具打包在一起统一配置，但是拉取docker镜像（image）的时候可能需要科学上网，全程开启clash的tun mode。后续如果还想进一步学习使用，可以在docker hub上找对应的镜像。https://hub.docker.com/
+1. docker: 类似于一个包管理软件，打包所有需要的系统环境或软件内容，放在本地以后即可离线访问不同的组件。项目使用docker技术将这些工具打包在一起统一配置，但是拉取docker镜像（image）的时候可能需要科学上网，全程开启clash的tun mode。后续如果还想进一步学习使用，可以在docker hub上找对应的镜像。https://hub.docker.com/    
 
 2. oneapi: 一种将大模型交互行为统一为openAI接口格式的工具，便于系统管理，需要配置令牌、模型渠道等等，后续在此基础上在线发布或收费啥的都比较方便。
 
@@ -23,9 +23,9 @@
 2. docker安装后需要添加到环境变量，否则系统终端可能会无法识别命令。记得也要把原始的环境变量添加到/etc/profile里，否则会覆盖并丢失原生的系统命令，如nano, ls, vim.
 ## 安装ollama
 1. 很简单，进网址直接下载就是
-https://ollama.com/download
+https://ollama.com/download    
 
-2. https://ollama.com/search在这个网址可以搜一下你想要的大模型，然后在命令行下载，如    
+2. https://ollama.com/search    在这个网址可以搜一下你想要的大模型，然后在命令行下载，如    
     ~~~
     ollama run qwen2.5-coder
     ~~~
@@ -40,7 +40,7 @@ https://ollama.com/download
 至此就完成了ollama的部署，已经初步可以使用大模型了，但是命令行的形式还是不够方便，所以我们需要安装一个open webui。
 
 ## open webui
-1. 该项目的github链接为https://github.com/open-webui/open-webui。
+1. 该项目的github链接为https://github.com/open-webui/open-webui    
 参考项目主页的介绍，由于我们已经有了ollama在本机，所以使用如下的代码安装：
 ~~~
 docker run -d -p 18080:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
@@ -58,7 +58,7 @@ localhost:18080
 ~~~
 4. 注册后登录即可进行大模型对话了，选择模型后对话，和gpt用法一样。
 ## fastgpt
-接下来就是本项目的重头戏，构建知识库系统，基本上是参考官方文档的设置。(https://doc.tryfastgpt.ai/docs/development/docker/)
+接下来就是本项目的重头戏，构建知识库系统，基本上是参考官方文档的设置。https://doc.tryfastgpt.ai/docs/development/docker/     
 
 1. 在本地新建一个fastgpt的文件夹，并下载config.json和docker-compose.yml到该文件夹下：
 ~~~
